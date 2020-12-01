@@ -1,6 +1,6 @@
-import React from "react";
-import s from "./Profile.module.css";
-import Publication from "./MyPublications/Publication/Publication";
+import React from 'react';
+import s from './Profile.module.css';
+import Publication from './MyPublications/Publication/Publication';
 
 const Profile = () => {
    return (

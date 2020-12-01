@@ -5,9 +5,17 @@
 }
 
 .items {
+    margin: 0;
+    padding: 20px;
+
     list-style: none;
 }
 
-.item.active {
-    color: brown;
+.items a {
+    color: black;
+    text-decoration: none;
+}
+
+.items .activeLink {
+    color: darkorange;
 }
