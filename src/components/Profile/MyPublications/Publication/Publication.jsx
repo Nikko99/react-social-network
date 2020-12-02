@@ -12,7 +12,7 @@ const Publication = (props) => {
          </div>
 
          <div>
-            <span>Likes {props.likes}</span>
+            <span>Likes {props.likesCount}</span>
          </div>
 
       </div>

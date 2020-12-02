@@ -11,21 +11,34 @@ const DialogsItem = (props) => {
 }
 
 const MessagesItem = (props) => {
-   return <div>{props.message}</div>
+   return <div>{props.messageText}</div>
 }
 
 const Dialogs = () => {
+
+   let dialogsData = [
+      { id: 1, name: 'Akhmed' },
+      { id: 2, name: 'Said' },
+      { id: 3, name: 'Umalat' }
+   ]
+
+   let messagesData = [
+      { id: 1, messageText: 'Hello' },
+      { id: 2, messageText: 'Its me' },
+      { id: 3, messageText: 'isadakdlasdnfajf' }
+   ]
+
    return (
       <div className={s.dialogs_wrapper}>
          <div>
-            <DialogsItem name='Akhmed' id='1'/>
-            <DialogsItem name='Said' id='2'/>
-            <DialogsItem name='Umalat' id='3'/>
+            <DialogsItem  id={dialogsData[0].id} name={dialogsData[0].name}/>
+            <DialogsItem  id={dialogsData[1].id} name={dialogsData[1].name}/>
+            <DialogsItem  id={dialogsData[2].id} name={dialogsData[2].name}/>
          </div>
          <div>
-            <MessagesItem message='Hello'/>
-            <MessagesItem message='Its me'/>
-            <MessagesItem message='isadakdlasdnfajf'/>
+            <MessagesItem messageText={messagesData[0].messageText}/>
+            <MessagesItem messageText={messagesData[1].messageText}/>
+            <MessagesItem messageText={messagesData[2].messageText}/>
          </div>
       </div>
    )
