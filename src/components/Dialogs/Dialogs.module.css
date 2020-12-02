@@ -1,9 +1,14 @@
 .dialogs_wrapper {
     display: grid;
     grid-template-columns: 2fr 10fr;
+
+    margin: 10px;
 }
 
-.dialog_item.active {
-    color: blueviolet;
+.dialogs_item a {
+    text-decoration: none;
 }
 
+.activeDialog {
+    color: red;
+}
