@@ -1,0 +1,9 @@
+.dialogs_wrapper {
+    display: grid;
+    grid-template-columns: 2fr 10fr;
+}
+
+.dialog_item.active {
+    color: blueviolet;
+}
+
