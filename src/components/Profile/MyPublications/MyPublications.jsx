@@ -2,15 +2,9 @@ import React from "react";
 import s from './MyPublications.module.css'
 import Publication from "./Publication/Publication";
 
-const MyPublications = () => {
+const MyPublications = (props) => {
 
-   let publicationsData = [
-      { id: 1, publicationText: 'It/s me', likesCount: '0' },
-      { id: 2, publicationText: 'Hello World', likesCount: '13' },
-      { id: 3, publicationText: 'test', likesCount: '1231231231' },
-   ]
-
-   let publicationsElements = publicationsData.map(p => {
+   let publicationsElements = props.publicationsData.map(p => {
       return (
          <Publication message={p.publicationText} likesCount={p.likesCount}/>
       )

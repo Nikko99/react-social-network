@@ -1,18 +1,7 @@
 import React from 'react';
 import s from './Dialogs.module.css';
-import {NavLink} from "react-router-dom";
-
-const DialogsItem = (props) => {
-   return (
-      <div className={s.dialogs_item}>
-         <NavLink to={'/im/' + props.id} activeClassName={s.activeDialog}>{props.name}</NavLink>
-      </div>
-   )
-}
-
-const MessagesItem = (props) => {
-   return <div>{props.messageText}</div>
-}
+import DialogsItem from "./DialogsItem/DialogsItem";
+import MessagesItem from "./MessagesItem/MessagesItem";
 
 const Dialogs = () => {
 
@@ -37,7 +26,7 @@ const Dialogs = () => {
    })
 
    return (
-      <div className={s.dialogs_wrapper}>
+      <div className={s.dialogs}>
          <div>
             {dialogsElements}
          </div>
