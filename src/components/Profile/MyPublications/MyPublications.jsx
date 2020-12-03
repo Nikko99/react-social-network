@@ -7,7 +7,14 @@ const MyPublications = () => {
    let publicationsData = [
       { id: 1, publicationText: 'It/s me', likesCount: '0' },
       { id: 2, publicationText: 'Hello World', likesCount: '13' },
+      { id: 3, publicationText: 'test', likesCount: '1231231231' },
    ]
+
+   let publicationsElements = publicationsData.map(p => {
+      return (
+         <Publication message={p.publicationText} likesCount={p.likesCount}/>
+      )
+   })
 
    return (
       <div className={s.my_publications}>
@@ -21,9 +28,7 @@ const MyPublications = () => {
                <button>Add</button>
             </div>
          </div>
-
-         <Publication message={publicationsData[0].publicationText} likesCount={publicationsData[0].likesCount}/>
-         <Publication message={publicationsData[1].publicationText} likesCount={publicationsData[1].likesCount}/>
+         {publicationsElements}
       </div>
    )
 }

@@ -28,17 +28,21 @@ const Dialogs = () => {
       { id: 3, messageText: 'isadakdlasdnfajf' }
    ]
 
+   let dialogsElements = dialogsData.map(d => {
+      return <DialogsItem id={d.id} name={d.name}/>
+   })
+
+   let messagesElement = messagesData.map(m => {
+      return <MessagesItem messageText={m.messageText}/>
+   })
+
    return (
       <div className={s.dialogs_wrapper}>
          <div>
-            <DialogsItem  id={dialogsData[0].id} name={dialogsData[0].name}/>
-            <DialogsItem  id={dialogsData[1].id} name={dialogsData[1].name}/>
-            <DialogsItem  id={dialogsData[2].id} name={dialogsData[2].name}/>
+            {dialogsElements}
          </div>
          <div>
-            <MessagesItem messageText={messagesData[0].messageText}/>
-            <MessagesItem messageText={messagesData[1].messageText}/>
-            <MessagesItem messageText={messagesData[2].messageText}/>
+            {messagesElement}
          </div>
       </div>
    )
