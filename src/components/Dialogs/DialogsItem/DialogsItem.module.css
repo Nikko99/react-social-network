@@ -2,6 +2,10 @@
     text-decoration: none;
 }
 
+.dialogs_item img {
+    width: 40px;
+}
+
 .activeDialog {
     color: red;
 }
