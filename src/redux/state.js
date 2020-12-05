@@ -1,3 +1,5 @@
+import {rerenderEntireTree} from "../render";
+
 let state = {
    profilePage: {
       publicationsData: [
@@ -30,6 +32,7 @@ export let addPublication = (publicationText) => {
       likesCount: 0
    }
    state.profilePage.publicationsData.push(newPublication)
+   rerenderEntireTree(state);
 }
 
 export default state;
