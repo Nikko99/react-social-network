@@ -10,16 +10,23 @@ const MyPublications = (props) => {
       )
    })
 
+   let newPublicationElement = React.createRef();
+
+   let addPublication = () => {
+      let text = newPublicationElement.current.value;
+      alert(text);
+   }
+
    return (
       <div className={s.my_publications}>
          <h3>My publications</h3>
 
          <div>
             <div>
-               <textarea/>
+               <textarea ref={newPublicationElement}/>
             </div>
             <div>
-               <button>Add</button>
+               <button onClick={addPublication}>Add</button>
             </div>
          </div>
          {publicationsElements}
