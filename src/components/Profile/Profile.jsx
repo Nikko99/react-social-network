@@ -9,7 +9,7 @@ const Profile = (props) => {
       <div>
          <ProfileInfo/>
 
-         <MyPublications publicationsData={props.state.publicationsData}/>
+         <MyPublications publicationsData={props.state.publicationsData} addPublication={props.addPublication}/>
       </div>
    )
 }

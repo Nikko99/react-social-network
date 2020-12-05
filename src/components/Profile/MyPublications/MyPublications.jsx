@@ -14,7 +14,7 @@ const MyPublications = (props) => {
 
    let addPublication = () => {
       let text = newPublicationElement.current.value;
-      alert(text);
+      props.addPublication(text);
    }
 
    return (
