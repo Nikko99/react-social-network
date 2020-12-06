@@ -13,9 +13,12 @@ const MyPublications = (props) => {
    let newPublicationElement = React.createRef();
 
    let addPublication = () => {
+      props.addPublication();
+   }
+
+   let onPublicationChange = () => {
       let text = newPublicationElement.current.value;
-      props.addPublication(text);
-      newPublicationElement.current.value = '';
+      props.updateNewPublicationText(text);
    }
 
    return (
@@ -24,7 +27,7 @@ const MyPublications = (props) => {
 
          <div>
             <div>
-               <textarea ref={newPublicationElement}/>
+               <textarea ref={newPublicationElement} onChange={onPublicationChange} value={props.newPublicationText}/>
             </div>
             <div>
                <button onClick={addPublication}>Add</button>

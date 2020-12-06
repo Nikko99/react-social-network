@@ -7,7 +7,8 @@ let state = {
          { id: 2, publicationText: 'Hello World', likesCount: 13 },
          { id: 3, publicationText: 'test', likesCount: 1231231231 },
          { id: 4, publicationText: 'privet', likesCount: 1 }
-      ]
+      ],
+      newPublicationText: 'Hello world'
    },
    dialogsPage: {
       dialogsData: [
@@ -25,13 +26,19 @@ let state = {
    }
 }
 
-export let addPublication = (publicationText) => {
+export let addPublication = () => {
    let newPublication = {
       id: 5,
-      publicationText: publicationText,
+      publicationText: state.profilePage.newPublicationText,
       likesCount: 0
    }
    state.profilePage.publicationsData.push(newPublication)
+   state.profilePage.newPublicationText = '';
+   rerenderEntireTree(state);
+}
+
+export let updateNewPublicationText = (newText) => {
+   state.profilePage.newPublicationText = newText;
    rerenderEntireTree(state);
 }
 
