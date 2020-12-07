@@ -11,8 +11,7 @@ const Profile = (props) => {
 
          <MyPublications publicationsData={props.profilePage.publicationsData}
                          newPublicationText={props.profilePage.newPublicationText}
-                         addPublication={props.addPublication}
-                         updateNewPublicationText = {props.updateNewPublicationText}/>
+                         dispatch={props.dispatch}/>
       </div>
    )
 }

@@ -24,28 +24,32 @@ let store = {
          ]
       }
    },
-   getState() {
-      return this._state
-   },
    _callSubscriber() {
       console.log('State changed');
    },
-   addPublication() {
-      let newPublication = {
-         id: 5,
-         publicationText: this._state.profilePage.newPublicationText,
-         likesCount: 0
-      }
-      this._state.profilePage.publicationsData.push(newPublication)
-      this._state.profilePage.newPublicationText = '';
-      this._callSubscriber(this._state);
-   },
-   updateNewPublicationText(newText) {
-      this._state.profilePage.newPublicationText = newText;
-      this._callSubscriber(this._state);
+
+   getState() {
+      return this._state
    },
    subscribe(observer) {
       this._callSubscriber = observer;
+   },
+
+   dispatch(action) {
+      debugger;
+      if (action.type === 'ADD-POST') {
+         let newPublication = {
+            id: 5,
+            publicationText: this._state.profilePage.newPublicationText,
+            likesCount: 0
+         }
+         this._state.profilePage.publicationsData.push(newPublication)
+         this._state.profilePage.newPublicationText = '';
+         this._callSubscriber(this._state);
+      } else if (action.type === 'UPDATE-NEW-PUBLICATION-TEXT') {
+         this._state.profilePage.newPublicationText = action.newText;
+         this._callSubscriber(this._state);
+      }
    }
 }
 

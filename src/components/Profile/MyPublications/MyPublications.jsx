@@ -13,12 +13,15 @@ const MyPublications = (props) => {
    let newPublicationElement = React.createRef();
 
    let addPublication = () => {
-      props.addPublication();
+      // props.addPublication();
+      props.dispatch({type: 'ADD-POST'})
    }
 
    let onPublicationChange = () => {
+      debugger;
       let text = newPublicationElement.current.value;
-      props.updateNewPublicationText(text);
+      // props.updateNewPublicationText(text);
+      props.dispatch({type: 'UPDATE-NEW-PUBLICATION-TEXT', newText: text})
    }
 
    return (
