@@ -1,6 +1,7 @@
 import React from "react";
 import s from './MyPublications.module.css'
 import Publication from "./Publication/Publication";
+import {addPublicationActionCreator, updateNewPublicationActionCreator} from "../../../redux/state";
 
 const MyPublications = (props) => {
 
@@ -14,14 +15,14 @@ const MyPublications = (props) => {
 
    let addPublication = () => {
       // props.addPublication();
-      props.dispatch({type: 'ADD-POST'})
+      props.dispatch(addPublicationActionCreator())
    }
 
    let onPublicationChange = () => {
       debugger;
       let text = newPublicationElement.current.value;
       // props.updateNewPublicationText(text);
-      props.dispatch({type: 'UPDATE-NEW-PUBLICATION-TEXT', newText: text})
+      props.dispatch(updateNewPublicationActionCreator(text))
    }
 
    return (
