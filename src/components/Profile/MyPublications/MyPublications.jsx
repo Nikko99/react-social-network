@@ -1,7 +1,7 @@
 import React from "react";
 import s from './MyPublications.module.css'
 import Publication from "./Publication/Publication";
-import {addPublicationActionCreator, updateNewPublicationActionCreator} from "../../../redux/state";
+import {addPublicationActionCreator, updateNewPublicationActionCreator} from "../../../redux/profileReducer";
 
 const MyPublications = (props) => {
 
