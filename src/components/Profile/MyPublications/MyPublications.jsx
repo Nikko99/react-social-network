@@ -14,14 +14,11 @@ const MyPublications = (props) => {
    let newPublicationElement = React.createRef();
 
    let addPublication = () => {
-      // props.addPublication();
       props.dispatch(addPublicationActionCreator())
    }
 
    let onPublicationChange = () => {
-      debugger;
       let text = newPublicationElement.current.value;
-      // props.updateNewPublicationText(text);
       props.dispatch(updateNewPublicationActionCreator(text))
    }
 

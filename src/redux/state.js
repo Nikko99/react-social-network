@@ -1,5 +1,7 @@
 const ADD_POST = 'ADD-POST';
 const UPDATE_NEW_PUBLICATION_TEXT = 'UPDATE-NEW-PUBLICATION-TEXT';
+const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT';
+const SEND_MESSAGE = 'SEND-MESSAGE';
 
 let store = {
    _state: {
@@ -24,7 +26,8 @@ let store = {
             { id: 2, messageText: 'Its me' },
             { id: 3, messageText: 'isadakdlasdnfajf' },
             { id: 4, messageText: '1234' }
-         ]
+         ],
+         newMessageText: ''
       }
    },
    _callSubscriber() {
@@ -52,6 +55,17 @@ let store = {
       } else if (action.type === UPDATE_NEW_PUBLICATION_TEXT) {
          this._state.profilePage.newPublicationText = action.newText;
          this._callSubscriber(this._state);
+      } else if (action.type === UPDATE_NEW_MESSAGE_TEXT) {
+         this._state.dialogsPage.newMessageText = action.newText;
+         this._callSubscriber(this._state);
+      } else if (action.type === SEND_MESSAGE) {
+         let newMessage = {
+            id: 5,
+            messageText: this._state.dialogsPage.newMessageText
+         }
+         this._state.dialogsPage.messagesData.push(newMessage)
+         this._state.dialogsPage.newMessageText = '';
+         this._callSubscriber(this._state);
       }
    }
 }
@@ -69,5 +83,18 @@ export const updateNewPublicationActionCreator = (text) => {
    }
 }
 
+export const sendMessageCreator = () => {
+   return {
+      type: SEND_MESSAGE
+   }
+}
+
+export const updateNewMessageCreator = (text) => {
+   return {
+      type: UPDATE_NEW_MESSAGE_TEXT,
+      newText: text
+   }
+}
+
 export default store;
-window.store  = store;
+window.store = store;
