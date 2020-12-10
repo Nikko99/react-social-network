@@ -5,11 +5,11 @@ import {BrowserRouter, Route} from "react-router-dom";
 import Header from './components/Header/Header';
 import Navbar from './components/Navbar/Navbar';
 
-import Dialogs from './components/Dialogs/Dialogs';
 import Profile from './components/Profile/Profile';
 import Music from './components/Music/Music';
 import News from './components/News/News';
 import Settings from './components/Settings/Settings';
+import DialogsContainer from "./components/Dialogs/DialogsContainer";
 
 const App = (props) => {
    return (
@@ -19,10 +19,10 @@ const App = (props) => {
             <Navbar/>
             <div className='app-wrapper-content'>
                <Route path='/profile' render={() =>
-                  <Profile profilePage={props.state.profilePage} dispatch={props.dispatch}/>
+                  <Profile store={props.store}/>
                }/>
                <Route path='/im' render={() =>
-                  <Dialogs state={props.state.dialogsPage} dispatch={props.dispatch}/>
+                  <DialogsContainer store={props.store} state={props.state.dialogsPage}/>
                }/>
                <Route path='/feed' render={() => <News/>}/>
                <Route path='/music' render={() => <Music/>}/>

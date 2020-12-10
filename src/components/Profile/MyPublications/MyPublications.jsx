@@ -1,7 +1,6 @@
 import React from "react";
 import s from './MyPublications.module.css'
 import Publication from "./Publication/Publication";
-import {addPublicationActionCreator, updateNewPublicationActionCreator} from "../../../redux/profileReducer";
 
 const MyPublications = (props) => {
 
@@ -14,12 +13,12 @@ const MyPublications = (props) => {
    let newPublicationElement = React.createRef();
 
    let addPublication = () => {
-      props.dispatch(addPublicationActionCreator())
+      props.addPublication();
    }
 
    let onPublicationChange = () => {
       let text = newPublicationElement.current.value;
-      props.dispatch(updateNewPublicationActionCreator(text))
+      props.onPublicationChange(text);
    }
 
    return (
