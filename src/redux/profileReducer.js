@@ -19,12 +19,16 @@ const profileReducer = (state = initialState, action) => {
             publicationText: state.newPublicationText,
             likesCount: 0
          }
-         state.publicationsData.push(newPublication)
-         state.newPublicationText = '';
-         return state;
+         return {
+            ...state,
+            publicationsData: [...state.publicationsData, newPublication],
+            newPublicationText: ''
+         };
       case UPDATE_NEW_PUBLICATION_TEXT:
-         state.newPublicationText = action.newText;
-         return state;
+         return {
+            ...state,
+            newPublicationText: action.newText
+         };
       default:
          return state;
    }
