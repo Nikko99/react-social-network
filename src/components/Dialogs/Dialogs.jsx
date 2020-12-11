@@ -3,14 +3,13 @@ import s from './Dialogs.module.css';
 import DialogsItem from "./DialogsItem/DialogsItem";
 import MessagesItem from "./MessagesItem/MessagesItem";
 
-
 const Dialogs = (props) => {
 
-   let dialogsElements = props.state.dialogsData.map(d => {
+   let dialogsElements = props.dialogsPage.dialogsData.map(d => {
       return <DialogsItem id={d.id} name={d.name}/>
    })
 
-   let messagesElement = props.state.messagesData.map(m => {
+   let messagesElement = props.dialogsPage.messagesData.map(m => {
       return <MessagesItem messageText={m.messageText}/>
    })
 
@@ -31,7 +30,7 @@ const Dialogs = (props) => {
          <div>
             {messagesElement}
             <div>
-               <textarea onChange={onMessageChange} value={props.state.newMessageText}/>
+               <textarea onChange={onMessageChange} value={props.dialogsPage.newMessageText}/>
             </div>
             <div>
                <button onClick={sendMessage}>Send</button>

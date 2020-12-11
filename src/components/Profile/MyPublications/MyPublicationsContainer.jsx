@@ -1,33 +1,27 @@
 import React from "react";
 import {addPublicationActionCreator, updateNewPublicationActionCreator} from "../../../redux/profileReducer";
 import MyPublications from "./MyPublications";
-import StoreContext from "../../../StoreContext";
+import {connect} from "react-redux";
 
-const MyPublicationsContainer = () => {
-   return (
-      <StoreContext.Consumer>
-         { store => {
-               let state = store.getState();
-
-               let addPublication = () => {
-                  store.dispatch(addPublicationActionCreator())
-               }
-
-               let onPublicationChange = (text) => {
-                  store.dispatch(updateNewPublicationActionCreator(text))
-               }
-
-               return (
-                  <MyPublications addPublication={addPublication}
-                                  onPublicationChange={onPublicationChange}
-                                  newPublicationText={state.profilePage.newPublicationText}
-                                  publicationsData={state.profilePage.publicationsData}
-                  />
-               )
-            }
-         }
-      </StoreContext.Consumer>
-   )
+const mapStateToProps = (state) => {
+   return {
+      publicationsData: state.profilePage.publicationsData,
+      newPublicationText: state.profilePage.newPublicationText
+   }
 }
+
+const mapDispatchToProps = (dispatch) => {
+   return {
+      addPublication: () => {
+         dispatch(addPublicationActionCreator())
+
+      },
+      onPublicationChange: (text) => {
+         dispatch(updateNewPublicationActionCreator(text))
+      }
+   }
+}
+
+const MyPublicationsContainer = connect(mapStateToProps, mapDispatchToProps)(MyPublications)
 
 export default MyPublicationsContainer;
