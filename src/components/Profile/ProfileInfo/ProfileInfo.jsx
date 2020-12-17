@@ -5,18 +5,20 @@ import Preloader from "../../common/Preloader/Preloader";
 const ProfileInfo = (props) => {
 
    if (!props.profile) {
-      return <Preloader />
+      return <Preloader/>
    }
 
    return (
       <div className={ s.profile_info }>
-
-         <div className={s.avatar}>
+         <div>
+            <p>{props.profile.fullName}</p>
+         </div>
+         <div className={ s.avatar }>
             <img src={ props.profile.photos.large } alt=''/>
          </div>
 
          <div className={ s.description }>
-            {props.profile.aboutMe}
+            { props.profile.aboutMe }
          </div>
       </div>
    )

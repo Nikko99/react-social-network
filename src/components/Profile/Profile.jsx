@@ -6,7 +6,7 @@ import MyPublicationsContainer from "./MyPublications/MyPublicationsContainer";
 const Profile = (props) => {
    return (
       <div>
-         <ProfileInfo profile={props.profile}/>
+         <ProfileInfo profile={ props.profile }/>
 
          <MyPublicationsContainer/>
       </div>
