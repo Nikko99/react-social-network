@@ -4,10 +4,7 @@ const SET_USER_PROFILE = 'SET_USER_PROFILE';
 
 let initialState = {
    publicationsData: [
-      { id: 1, publicationText: 'it\'s me', likesCount: 0 },
-      { id: 2, publicationText: 'Hello World', likesCount: 13 },
-      { id: 3, publicationText: 'test', likesCount: 1231231231 },
-      { id: 4, publicationText: 'privet', likesCount: 1 }
+      { id: 1, publicationText: 'Hello World', likesCount: 13 }
    ],
    newPublicationText: 'Hello world',
    profile: null

@@ -7,3 +7,9 @@
 .header img {
     width: 30px;
 }
+
+.login {
+    float: right;
+    margin-right: 30px;
+    margin-top: 15px;
+}

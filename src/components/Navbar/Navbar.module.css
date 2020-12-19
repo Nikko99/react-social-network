@@ -16,6 +16,6 @@
     text-decoration: none;
 }
 
-.items .activeLink {
+.activeLink {
     color: darkorange;
 }

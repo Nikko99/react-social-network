@@ -6,7 +6,7 @@ const MyPublications = (props) => {
 
    let publicationsElements = props.publicationsData.map(p => {
       return (
-         <Publication message={p.publicationText} likesCount={p.likesCount}/>
+         <Publication key={p.id} message={p.publicationText} likesCount={p.likesCount}/>
       )
    })
 
