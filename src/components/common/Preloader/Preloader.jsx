@@ -3,9 +3,11 @@ import './Preloader.css'
 
 const Preloader = () => {
    return (
-      <div className="lds-ripple">
-         <div></div>
-         <div></div>
+      <div className="preloader">
+         <div className="lds-ripple">
+            <div></div>
+            <div></div>
+         </div>
       </div>
    )
 }
