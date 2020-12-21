@@ -31,46 +31,53 @@ const Users = (props) => {
                })
             }
          </div>
-         { props.users.map(u => {
-            return (
-               <div key={ u.id } className={ s.user_card }>
-                  <div>
-                     <NavLink to={ '/profile/' + u.id }>
-                        <img src={ u.photos.small !== null ? u.photos.small : userPhoto } alt=""/>
-                     </NavLink>
-                  </div>
-                  <div>
-                     <p>{ u.name }</p>
-                     <p>{ u.status }</p>
+         <div>
+            {
+               props.users.map(u => {
+                  return (
+                     <div key={ u.id } className={ s.user_card }>
+                        <div>
+                           <NavLink to={ '/profile/' + u.id }>
+                              <img src={ u.photos.small !== null ? u.photos.small : userPhoto } alt=""/>
+                           </NavLink>
+                        </div>
+                        <div>
+                           <p>{ u.name }</p>
+                           <p>{ u.status }</p>
 
-                     { u.followed
-                        ? <button onClick={ () => {
+                           { u.followed
+                              ? <button disabled={ props.followingInProgress.some(id => id === u.id) } onClick={ () => {
 
-                           usersAPI.unfollow(u.id)
-                              .then(response => {
-                                 if (response.data.resultCode === 0) {
-                                    props.unfollow(u.id)
-                                 }
-                              });
+                                 props.toggleFollowingProgress(true, u.id);
+                                 usersAPI.unfollow(u.id)
+                                    .then(response => {
+                                       if (response.data.resultCode === 0) {
+                                          props.unfollow(u.id)
+                                       }
+                                       props.toggleFollowingProgress(false, u.id)
+                                    });
 
-                        } }>Unfollow</button>
+                              } }>Unfollow</button>
 
-                        : <button onClick={ () => {
+                              : <button disabled={ props.followingInProgress.some(id => id === u.id) } onClick={ () => {
 
-                           usersAPI.follow(u.id)
-                              .then(response => {
-                                 if (response.data.resultCode === 0) {
-                                    props.follow(u.id)
-                                 }
-                              });
+                                 props.toggleFollowingProgress(true, u.id);
+                                 usersAPI.follow(u.id)
+                                    .then(response => {
+                                       if (response.data.resultCode === 0) {
+                                          props.follow(u.id)
+                                       }
+                                       props.toggleFollowingProgress(false, u.id)
+                                    });
 
-                        } }>Follow</button>
-                     }
-                  </div>
-               </div>
-            )
-         })
-         }
+                              } }>Follow</button>
+                           }
+                        </div>
+                     </div>
+                  )
+               })
+            }
+         </div>
       </div>
    )
 }
