@@ -20,13 +20,7 @@ class UsersContainer extends React.Component {
    }
 
    onPaginationClick = (pageNumber) => {
-      this.props.toggleIsFetching(true)
-      this.props.setCurrentPage(pageNumber);
-      usersAPI.getUsers(pageNumber, this.props.pageSize)
-         .then(response => {
-            this.props.toggleIsFetching(false)
-            this.props.setUsers(response.items);
-         });
+      this.props.getUsers(pageNumber, this.props.pageSize)
    }
 
    render() {
