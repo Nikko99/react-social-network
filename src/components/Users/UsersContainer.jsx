@@ -2,7 +2,7 @@ import React from 'react';
 import Users from './Users';
 import { connect } from 'react-redux';
 import {
-   follow,
+   follow, getUsers,
    setCurrentPage,
    setTotalUsers,
    setUsers,
@@ -16,13 +16,7 @@ import { usersAPI } from '../../api/api';
 class UsersContainer extends React.Component {
 
    componentDidMount() {
-      this.props.toggleIsFetching(true)
-      usersAPI.getUsers(this.props.currentPage, this.props.pageSize)
-         .then(response => {
-            this.props.toggleIsFetching(false)
-            this.props.setUsers(response.items);
-            this.props.setTotalUsers(response.totalCount);
-         });
+      this.props.getUsers(this.props.currentPage, this.props.pageSize)
    }
 
    onPaginationClick = (pageNumber) => {
@@ -73,5 +67,6 @@ export default connect(mapStateToProps, {
    setCurrentPage,
    setTotalUsers,
    toggleIsFetching,
-   toggleFollowingProgress
+   toggleFollowingProgress,
+   getUsers
 })(UsersContainer);
