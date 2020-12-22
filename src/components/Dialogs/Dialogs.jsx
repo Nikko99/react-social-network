@@ -1,8 +1,7 @@
 import React from 'react';
 import s from './Dialogs.module.css';
-import DialogsItem from "./DialogsItem/DialogsItem";
-import MessagesItem from "./MessagesItem/MessagesItem";
-import { Redirect } from "react-router";
+import DialogsItem from './DialogsItem/DialogsItem';
+import MessagesItem from './MessagesItem/MessagesItem';
 
 const Dialogs = (props) => {
 
@@ -15,15 +14,13 @@ const Dialogs = (props) => {
    })
 
    let sendMessage = () => {
-      props.sendMessage();
+      props.sendMessage()
    }
 
    let onMessageChange = (e) => {
-      let text = e.target.value;
-      props.onMessageChange(text);
+      let text = e.target.value
+      props.onMessageChange(text)
    }
-
-   if (!props.isAuth) return <Redirect to='/login' />
 
    return (
       <div className={s.dialogs}>
@@ -43,4 +40,4 @@ const Dialogs = (props) => {
    )
 }
 
-export default Dialogs;
+export default Dialogs
