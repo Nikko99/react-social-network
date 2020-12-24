@@ -12,12 +12,12 @@ const ProfileInfo = (props) => {
    return (
       <div className={ s.profile_info }>
          <div>
-            <p>{props.profile.fullName}</p>
+            <p>{ props.profile.fullName }</p>
          </div>
          <div>
             <img src={ props.profile.photos.large } alt=''/>
          </div>
-         <ProfileStatus status={props.profile.aboutMe} />
+         <ProfileStatus status={ props.status }/>
       </div>
    )
 }
