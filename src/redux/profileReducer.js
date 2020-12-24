@@ -1,6 +1,4 @@
-import { usersAPI } from "../api/api";
-import { setAuthUserData } from "./authReducer";
-import axios from "axios";
+import { profileAPI } from "../api/api";
 
 const ADD_POST = 'ADD-POST';
 const UPDATE_NEW_PUBLICATION_TEXT = 'UPDATE-NEW-PUBLICATION-TEXT';
@@ -64,7 +62,7 @@ export const setUserProfile = (profile) => {
 
 export const getProfileInfo = (userId) => {
    return (dispatch) => {
-      usersAPI.getProfileInfo(userId)
+      profileAPI.getProfileInfo(userId)
          .then(response => {
             dispatch(setUserProfile(response.data))
          })
