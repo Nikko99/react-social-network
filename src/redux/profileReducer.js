@@ -1,7 +1,6 @@
 import { profileAPI } from '../api/api'
 
-const ADD_POST = 'ADD-POST'
-const UPDATE_NEW_PUBLICATION_TEXT = 'UPDATE-NEW-PUBLICATION-TEXT'
+const ADD_PUBLICATION = 'ADD_PUBLICATION'
 const SET_USER_PROFILE = 'SET_USER_PROFILE'
 const SET_USER_STATUS = 'SET_USER_STATUS'
 
@@ -9,28 +8,22 @@ let initialState = {
    publicationsData: [
       { id: 1, publicationText: 'Hello World', likesCount: 13 }
    ],
-   newPublicationText: 'Hello world',
    profile: null,
    status: ''
 }
 
 const profileReducer = (state = initialState, action) => {
    switch (action.type) {
-      case ADD_POST:
+      case ADD_PUBLICATION:
          let newPublication = {
             id: 5,
-            publicationText: state.newPublicationText,
+            publicationText: action.publication,
             likesCount: 0
          }
          return {
             ...state,
             publicationsData: [...state.publicationsData, newPublication],
             newPublicationText: ''
-         }
-      case UPDATE_NEW_PUBLICATION_TEXT:
-         return {
-            ...state,
-            newPublicationText: action.newText
          }
       case SET_USER_PROFILE:
          return {
@@ -47,16 +40,10 @@ const profileReducer = (state = initialState, action) => {
    }
 }
 
-export const addPublicationActionCreator = () => {
+export const addPublicationActionCreator = (publication) => {
    return {
-      type: ADD_POST
-   }
-}
-
-export const updateNewPublicationActionCreator = (text) => {
-   return {
-      type: UPDATE_NEW_PUBLICATION_TEXT,
-      newText: text
+      type: ADD_PUBLICATION,
+      publication
    }
 }
 

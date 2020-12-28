@@ -1,23 +1,17 @@
-import React from "react";
-import {addPublicationActionCreator, updateNewPublicationActionCreator} from "../../../redux/profileReducer";
-import MyPublications from "./MyPublications";
-import {connect} from "react-redux";
+import { addPublicationActionCreator } from '../../../redux/profileReducer'
+import MyPublications from './MyPublications'
+import { connect } from 'react-redux'
 
 const mapStateToProps = (state) => {
    return {
-      publicationsData: state.profilePage.publicationsData,
-      newPublicationText: state.profilePage.newPublicationText
+      publicationsData: state.profilePage.publicationsData
    }
 }
 
 const mapDispatchToProps = (dispatch) => {
    return {
-      addPublication: () => {
-         dispatch(addPublicationActionCreator())
-
-      },
-      onPublicationChange: (text) => {
-         dispatch(updateNewPublicationActionCreator(text))
+      addPublication: (publication) => {
+         dispatch(addPublicationActionCreator(publication))
       }
    }
 }

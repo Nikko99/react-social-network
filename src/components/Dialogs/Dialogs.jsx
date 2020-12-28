@@ -1,42 +1,50 @@
-import React from 'react';
-import s from './Dialogs.module.css';
-import DialogsItem from './DialogsItem/DialogsItem';
-import MessagesItem from './MessagesItem/MessagesItem';
+import React from 'react'
+import s from './Dialogs.module.css'
+import DialogsItem from './DialogsItem/DialogsItem'
+import MessagesItem from './MessagesItem/MessagesItem'
+import { Form, Field } from 'react-final-form'
 
 const Dialogs = (props) => {
 
    let dialogsElements = props.dialogsPage.dialogsData.map(d => {
-      return <DialogsItem id={d.id} name={d.name}/>
+      return <DialogsItem key={ d.id } id={ d.id } name={ d.name }/>
    })
 
    let messagesElement = props.dialogsPage.messagesData.map(m => {
-      return <MessagesItem messageText={m.messageText}/>
+      return <MessagesItem key={ m.id } messageText={ m.messageText }/>
    })
 
-   let sendMessage = () => {
-      props.sendMessage()
-   }
-
-   let onMessageChange = (e) => {
-      let text = e.target.value
-      props.onMessageChange(text)
+   let sendMessage = (values) => {
+      props.sendMessage(values.message)
    }
 
    return (
-      <div className={s.dialogs}>
+      <div className={ s.dialogs }>
          <div>
-            {dialogsElements}
+            { dialogsElements }
          </div>
          <div>
-            {messagesElement}
-            <div>
-               <textarea onChange={onMessageChange} value={props.dialogsPage.newMessageText}/>
-            </div>
-            <div>
-               <button onClick={sendMessage}>Send</button>
-            </div>
+            { messagesElement }
+            <AddMessageForm onSubmit={ sendMessage }/>
          </div>
       </div>
+   )
+}
+
+const AddMessageForm = (props) => {
+   return (
+      <Form onSubmit={ props.onSubmit }>
+         { props => (
+            <form onSubmit={ props.handleSubmit }>
+               <div>
+                  <Field name='message' component='textarea' placeholder='Enter your message'/>
+               </div>
+               <div>
+                  <button>Send</button>
+               </div>
+            </form>
+         ) }
+      </Form>
    )
 }
 
