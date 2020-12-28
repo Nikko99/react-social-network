@@ -22,8 +22,7 @@ const profileReducer = (state = initialState, action) => {
          }
          return {
             ...state,
-            publicationsData: [...state.publicationsData, newPublication],
-            newPublicationText: ''
+            publicationsData: [...state.publicationsData, newPublication]
          }
       case SET_USER_PROFILE:
          return {

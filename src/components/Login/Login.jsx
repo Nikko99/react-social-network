@@ -1,6 +1,27 @@
 import React from 'react'
 import s from './Login.module.css'
 import { Form, Field } from 'react-final-form'
+import { connect } from "react-redux";
+import { login } from "../../redux/authReducer";
+import { Redirect } from "react-router";
+
+const Login = (props) => {
+   const onSubmit = (formData) => {
+      const {email, password, rememberMe} = formData
+      props.login(email, password, rememberMe)
+   }
+
+   if (props.isAuth) {
+      return <Redirect to='profile'/>
+   }
+
+   return (
+      <div className={ s.login }>
+         <h1>Sign In to continue</h1>
+         <LoginForm onSubmit={ onSubmit }/>
+      </div>
+   )
+}
 
 const LoginForm = (props) => {
    return (
@@ -8,13 +29,16 @@ const LoginForm = (props) => {
          { props => (
             <form onSubmit={ props.handleSubmit }>
                <div>
-                  <Field name='login' component='input' />
+                  <Field placeholder='email' name='email' component='input'/>
                </div>
                <div>
-                  <Field name='password' component='input' />
+                  <Field placeholder='password' name='password' component='input' type='password'/>
                </div>
                <div>
-                  <Field name='remember' component="input" type='checkbox'/> Remember me
+                  <label>
+                     <Field name='rememberMe' component='input' type='checkbox'/>
+                     Remember me
+                  </label>
                </div>
                <div>
                   <button>Sign In</button>
@@ -25,17 +49,8 @@ const LoginForm = (props) => {
    )
 }
 
-const Login = () => {
-   const onSubmit = (formData) => {
-      console.log(formData)
-   }
+const mapStateToProps = (state) => ({
+   isAuth: state.auth.isAuth
+})
 
-   return (
-      <div className={ s.login }>
-         <h1>Sign In to continue</h1>
-         <LoginForm onSubmit={onSubmit} />
-      </div>
-   )
-}
-
-export default Login
+export default connect(mapStateToProps, {login})(Login)
