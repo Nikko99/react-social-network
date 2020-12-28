@@ -1,3 +1,4 @@
+// старый файл, давно не используется
 import profileReducer from "./profileReducer";
 import dialogsReducer from "./dialogsReducer";
 
